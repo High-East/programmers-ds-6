@@ -8,9 +8,9 @@ def read_yaml(path):
     return data
 
 
-def get_Redshift_connection():
+def get_redshift_connection():
     # Get login information
-    login = read_yaml("/Users/KDH/project/programmers-ds-6/login.yaml")
+    login = read_yaml("/Users/donghee/Library/Mobile Documents/com~apple~CloudDocs/Project/programmers-ds-6/login.yaml")
     host = login['HOST']
     redshift_user = login['ID']
     redshift_pass = login['PW']
