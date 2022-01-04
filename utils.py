@@ -28,6 +28,26 @@ def get_redshift_connection():
     return conn.cursor()
 
 
+def get_redshift_connection2(autocommit=True):
+    # Get login information
+    login = read_yaml("/Users/donghee/Library/Mobile Documents/com~apple~CloudDocs/Project/programmers-ds-6/login.yaml")
+    host = login['HOST']
+    redshift_user = login['ID']
+    redshift_pass = login['PW']
+    port = login['PORT']
+    dbname = login['NAME']
+    # Login Redshift
+    conn = psycopg2.connect("dbname={dbname} user={user} host={host} password={password} port={port}".format(
+        dbname=dbname,
+        user=redshift_user,
+        password=redshift_pass,
+        host=host,
+        port=port
+    ))
+    conn.set_session(autocommit=autocommit)
+    return conn
+
+
 class Color:
     # print(Color.BOLD + 'Hello World !' + Color.END)
     RED = '\033[91m'
